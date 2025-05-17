@@ -9,7 +9,7 @@ RTX4090 3台を管理するためのリポジトリです。
 
 ## 初回利用時
 1. 利用予約・通知用の[Slackグループ](https://join.slack.com/t/shilabgpunotify/shared_invite/zt-35hwn8cdv-uYu_utz~Q0S0zPpvEBri_g)に入る
-2. [予約管理スプレッドシート](https://docs.google.com/spreadsheets/d/1oI2zM7loJsN-LNtxFO1VnpVop_PqMW00xR6ty_vYPbA/edit?gid=2081617412#gid=2081617412)の利用者一覧タブに自分の名前を記入
+2. [予約管理スプレッドシート](https://docs.google.com/spreadsheets/d/1oI2zM7loJsN-LNtxFO1VnpVop_PqMW00xR6ty_vYPbA/edit?gid=2081617412#gid=2081617412)の利用者一覧タブに自分の名前を記入<BR>
 ※ 利用者一覧に自分の名前を登録することで予約ができるようになります
 
 ## 通常利用時手順書
@@ -26,7 +26,7 @@ RTX4090 3台を管理するためのリポジトリです。
    - `NEXT_EXECUTOR`(次の実行候補者3名を全て記入)
    - `EXECUTE_FILE_PATH`(実行したいファイルの絶対パス)
 4. ターミナル上で`./run_template.sh`を実行
-5. 実行30分後の▲実行中通知が届いたタイミングで、自分の名前をオレンジ枠から消し、他の人たちの順位を繰り上げる
+5. 実行30分後の▲実行中通知が届いたタイミングで、自分の名前をオレンジ枠から消し、他の人たちの順位を繰り上げる<BR>
 ※ 実行に不具合があった場合、実行後30分以内であれば修正可能です。
 
 # 注意事項
