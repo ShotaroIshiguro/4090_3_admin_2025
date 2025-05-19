@@ -45,4 +45,11 @@ GPUの共同利用を管理するためのリポジトリです。
 ## その他
 - リポジトリの改善提案などは大歓迎です。プルリクエストでお知らせください。
 - 自分のPCやGoogle Colaboratory、研究室内のその他GPUつきPCで実行可能であることを確認してから、GPUを使った作業に移ることを推奨します。
-- USBメモリ・外付けSSD接続やファイルダウンロード、gitクローンなどの手段で、GPU付きPC内に自分の環境を構築することが可能です。
+- USBメモリ・外付けSSD接続やファイルダウンロード、gitクローンなどの手段で、GPU付きPC内に自分の環境を構築することが可能です。   
+
+## 参考URL
+- [Slackグループ](https://join.slack.com/t/shilabgpunotify/shared_invite/zt-35hwn8cdv-uYu_utz~Q0S0zPpvEBri_g)
+- [予約管理スプレッドシート](https://docs.google.com/spreadsheets/d/1oI2zM7loJsN-LNtxFO1VnpVop_PqMW00xR6ty_vYPbA/edit?gid=2081617412#gid=2081617412)
+- [Slack API](https://api.slack.com/apps/A08T6LN82HW/incoming-webhooks?success=1)
+- [condaの使い方](https://qiita.com/yasushi-jp/items/7ce0975db7a7e9ac7991)
+- [gitの使い方](https://qiita.com/wwacky/items/2f110ee76fc1cb681c3b)
