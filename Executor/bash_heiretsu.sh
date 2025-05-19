@@ -31,9 +31,9 @@ EXECUTE_FILE_PATH="/Shotaro_Ishiguro/main.py"
 
 
 # --- 固定設定項目 ---
-WEBHOOK_URL="https://hooks.slack.com/services/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"
+WEBHOOK_URL="https://hooks.slack.com/services/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"
 EXECUTE_EXECUTE_FILE_PATH="${USER_NAME}/main.py"
-TIME_LIMIT=10  # 秒（本来は1800秒＝30分）
+TIME_LIMIT=5  # 秒（本来は1800秒＝30分）
 
 # --- 開始時刻記録 ---
 START_TIME=$(date +%s)
