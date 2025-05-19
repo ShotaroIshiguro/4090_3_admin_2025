@@ -4,7 +4,8 @@
 USER_NAME="Shotaro_Ishiguro"
 GPU_NUM=0
 NEXT_EXECUTOR="Ohmori_Nariaki, Noguchi_Hayata, Tochiki_Ohno"
-EXECUTE_FILE_PATH="Shotaro_Ishiguro/main.py"
+EXECUTE_FILE_PATH="Shotaro_Ishiguro/main.py "
+EXECUTE_ARGS="--time_for_run 10 -n 石黒"
 
 
 
@@ -31,8 +32,7 @@ EXECUTE_FILE_PATH="Shotaro_Ishiguro/main.py"
 
 
 # --- 固定設定項目 ---
-WEBHOOK_URL="https://hooks.slack.com/services/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"
-# EXECUTE_EXECUTE_FILE_PATH="${USER_NAME}/main.py"
+WEBHOOK_URL=""
 TIME_LIMIT=5  # 秒（本来は1800秒＝30分）
 
 # --- 開始時刻記録 ---
@@ -61,7 +61,7 @@ WATCHER_PID=$!
 
 # --- 実行 ---
 export CUDA_VISIBLE_DEVICES=${GPU_NUM}
-python3 "$EXECUTE_FILE_PATH"
+eval python3 $EXECUTE_FILE_PATH $EXECUTE_ARGS
 EXIT_CODE=$?
 PROCESS_EXITED=true
 END_TIME=$(date +%s)
