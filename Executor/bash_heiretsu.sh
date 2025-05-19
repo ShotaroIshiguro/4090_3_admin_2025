@@ -4,7 +4,7 @@
 USER_NAME="Shotaro_Ishiguro"
 GPU_NUM=0
 NEXT_EXECUTOR="Ohmori_Nariaki, Noguchi_Hayata, Tochiki_Ohno"
-EXECUTE_FILE_PATH="\\wsl.localhost\Ubuntu\home\shotaro2001\diffusion-rig-Emo\DiffusionRig_main\notify_test\Shotaro_Ishiguro\main.py"
+EXECUTE_FILE_PATH="/Shotaro_Ishiguro/main.py"
 
 
 
@@ -31,9 +31,9 @@ EXECUTE_FILE_PATH="\\wsl.localhost\Ubuntu\home\shotaro2001\diffusion-rig-Emo\Dif
 
 
 # --- 固定設定項目 ---
-WEBHOOK_URL="https://hooks.slack.com/services/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"
+WEBHOOK_URL="https://hooks.slack.com/services/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"
 EXECUTE_EXECUTE_FILE_PATH="${USER_NAME}/main.py"
-TIME_LIMIT=1800  # 秒（本来は1800秒＝30分）
+TIME_LIMIT=10  # 秒（本来は1800秒＝30分）
 
 # --- 開始時刻記録 ---
 START_TIME=$(date +%s)
