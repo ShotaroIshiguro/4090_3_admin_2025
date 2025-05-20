@@ -33,7 +33,7 @@ EXECUTE_ARGS="--time_for_run 10 -n 石黒"
 
 # --- 固定設定項目 ---
 WEBHOOK_URL=""
-TIME_LIMIT=5  # 秒（本来は1800秒＝30分）
+TIME_LIMIT=1800  # 秒（本来は1800秒＝30分）
 
 # --- 開始時刻記録 ---
 START_TIME=$(date +%s)
