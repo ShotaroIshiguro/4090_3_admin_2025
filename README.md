@@ -6,6 +6,8 @@ GPUの共同利用を管理するためのリポジトリです。
 2025年度 早稲田大学大学院 基幹理工学研究科 電子物理システム学専攻 史研究室 M2 <br>
 <i>石黒将太郎</i>
 </p>
+- Hamster：GPU2台、研究室に入って左奥にあるサーバ
+- Ferret：GPU3台、研究室に入って右側にあるサーバ
 
 ## 初回利用時
 1. 利用予約・通知用の[Slackグループ](https://join.slack.com/t/shilabgpunotify/shared_invite/zt-35hwn8cdv-uYu_utz~Q0S0zPpvEBri_g)に入る
