@@ -57,3 +57,9 @@ GPUの共同利用を管理するためのリポジトリです。
 - [Slack API](https://api.slack.com/apps/A08T6LN82HW/incoming-webhooks?success=1)
 - [condaの使い方](https://qiita.com/yasushi-jp/items/7ce0975db7a7e9ac7991)
 - [gitの使い方](https://qiita.com/wwacky/items/2f110ee76fc1cb681c3b)
+
+## slack操作画面
+
+https://github.com/user-attachments/assets/3fa37df0-b748-4b57-9674-ca1637d438a6
+
+
