@@ -46,6 +46,31 @@ GPUの共同利用を管理するためのリポジトリです。
 - 一度に複数の予約を取ることは禁止です。次の予約は必ず１日以上空けてください
 - condaのbase環境での作業、他人のconda環境の改変
 
+## NASに接続できなくなっていた場合
+1. ターミナルを開く
+2. NFSクライアントをインストール(恐らくされているはず)
+```
+sudo apt install nfs-common
+```
+3. NASのエクスポート一覧を確認
+```
+showmount -e 192.168.100.2
+```
+4. ローカルのマウントポイントを作成
+```
+sudo mkdir -p /mnt/data
+```
+5. マウントを試して動作確認を行う
+```
+sudo mount -t nfs 192.168.100.2:/volume2/Data-Online /mnt/data
+ls /mnt/data
+```
+6. fstabコマンドの動作確認と`/mnt/data`にマウントされているかを確認
+```
+sudo mount -a
+mount | grep /mnt/data
+```
+
 ## その他
 - リポジトリの改善提案などは大歓迎です。プルリクエストでお知らせください。
 - 自分のPCやGoogle Colaboratory、研究室内のその他GPUつきPCで実行可能であることを確認してから、GPUを使った作業に移ることを推奨します。
