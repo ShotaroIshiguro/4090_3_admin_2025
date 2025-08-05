@@ -24,7 +24,7 @@ GPUの共同利用を管理するためのリポジトリです。
 1. 自分の番が回ってきたら、研究室内のパソコン上でwatch nvidia-smiを実行し、空いているGPU番号を確認
 2. slackのnotifyチャネルで自分がパソコンを触り始めたことを通知(例: 実験を開始します)
 3. `conda`で自分専用の環境を作成(venv非推奨)
-4. `bash_template.sh`の実行前記入欄を全て埋める
+4. `bash_heiretsu.sh`の実行前記入欄を全て埋める
    - `YOUR_NAME`(自分の名前)
    - `GPU_NUM`(使用するGPUの番号)
    - `NEXT_EXECUTOR`(次の実行候補者3名を全て記入)
