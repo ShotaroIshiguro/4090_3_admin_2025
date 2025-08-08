@@ -3,32 +3,23 @@
 # --- 記入必須項目 ---
 USER_NAME="Shotaro_Ishiguro"
 GPU_NUM=0
-NEXT_EXECUTOR="Ohmori_Nariaki, Noguchi_Hayata, Tochiki_Ohno"
-EXECUTE_FILE_PATH="Shotaro_Ishiguro/main.py "
+EXECUTE_FILE_PATH="Shotaro_Ishiguro/main.py"
 EXECUTE_ARGS="--time_for_run 10 -n 石黒"
-
+SHEET_UPDATER_SCRIPT="update_sheet.py" 
 
 
 # 以降の改変禁止！！！！！！！！
 # ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓   Do not touch!!!!!!   ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+echo "--- スプレッドシートの待機列を更新中... ---"
+# Pythonスクリプトを実行し、その出力（次回実行者リスト）を変数に格納
+NEXT_EXECUTOR=$(python3 "$SHEET_UPDATER_SCRIPT" "$USER_NAME")
+if [ -z "$NEXT_EXECUTOR" ]; then
+    echo "警告: 次回実行者候補の取得に失敗しました。"
+    NEXT_EXECUTOR="取得失敗"
+fi
+echo "--- 更新完了。次回実行者候補: ${NEXT_EXECUTOR} ---"
 
 
 # --- 固定設定項目 ---
@@ -60,8 +51,9 @@ trap '' SIGINT SIGTERM
 WATCHER_PID=$!
 
 # --- 実行 ---
+echo "--- Pythonスクリプトの実行を開始します ---"
 export CUDA_VISIBLE_DEVICES=${GPU_NUM}
-eval python3 $EXECUTE_FILE_PATH $EXECUTE_ARGS
+eval python3 "$EXECUTE_FILE_PATH" $EXECUTE_ARGS
 EXIT_CODE=$?
 PROCESS_EXITED=true
 END_TIME=$(date +%s)
@@ -73,22 +65,15 @@ kill "$WATCHER_PID" 2>/dev/null
 
 # --- 実行時間によってステータスを決定 ---
 if [ "$EXIT_CODE" -eq 0 ]; then
-    if [ "$DURATION" -gt "$TIME_LIMIT" ]; then
-        STATUS="✅ 成功"
-    else
-        STATUS="✅ 正常終了（${TIME_LIMIT}min以内）"
-    fi
-    MESSAGE="*${STATUS}*\n*実行者*: \`${USER_NAME}\`\n*GPU番号*: \`${GPU_NUM}\`\n*スクリプト*: \`${EXECUTE_FILE_PATH}\`\n*開始時間*: ${START_TIMESTAMP}\n*終了時間*: ${END_TIMESTAMP}\n*実行時間*: ${DURATION} 秒\n\n*次回実行者候補*: \`${NEXT_EXECUTOR}\`"
+    STATUS="✅ 成功"
+    MESSAGE="*${STATUS}*\n*実行者*: \`${USER_NAME}\`\n*GPU番号*: \`${GPU_NUM}\`\n*スクリプト*: \`${EXECUTE_FILE_PATH} ${EXECUTE_ARGS}\`\n*開始時間*: ${START_TIMESTAMP}\n*終了時間*: ${END_TIMESTAMP}\n*実行時間*: ${DURATION} 秒\n\n*次回実行者候補*: \`${NEXT_EXECUTOR}\`"
     curl -X POST -H 'Content-type: application/json' \
       --data "{\"text\":\"${MESSAGE}\"}" \
       "$WEBHOOK_URL"
 else
-    if [ "$DURATION" -gt "$TIME_LIMIT" ]; then
-        STATUS="❌ 中断・失敗（${TIME_LIMIT}秒超）"
-        MESSAGE="*${STATUS}*\n*実行者*: \`${USER_NAME}\`\n*GPU番号*: \`${GPU_NUM}\`\n*スクリプト*: \`${EXECUTE_FILE_PATH}\`\n*開始時間*: ${START_TIMESTAMP}\n*終了時間*: ${END_TIMESTAMP}\n*実行時間*: ${DURATION} 秒\n\n*次回実行者候補*: \`${NEXT_EXECUTOR}\`"
-        curl -X POST -H 'Content-type: application/json' \
-          --data "{\"text\":\"${MESSAGE}\"}" \
-          "$WEBHOOK_URL"
-    fi
+    STATUS="❌ 失敗"
+    MESSAGE="*${STATUS}*\n*実行者*: \`${USER_NAME}\`\n*GPU番号*: \`${GPU_NUM}\`\n*スクリプト*: \`${EXECUTE_FILE_PATH} ${EXECUTE_ARGS}\`\n*終了コード*: ${EXIT_CODE}\n*開始時間*: ${START_TIMESTAMP}\n*終了時間*: ${END_TIMESTAMP}\n*実行時間*: ${DURATION} 秒\n\n*次回実行者候補*: \`${NEXT_EXECUTOR}\`"
+    curl -X POST -H 'Content-type: application/json' \
+      --data "{\"text\":\"${MESSAGE}\"}" \
+      "$WEBHOOK_URL"
 fi
-
